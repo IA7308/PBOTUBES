@@ -190,4 +190,203 @@ public class Pembeli {
         }
     }
 
+    private void LihatRumahAlamat(String alamat, ArrayList<DataRumah> listRumah) {
+        boolean ketemu = false;
+
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getAlamat().startsWith(alamat)) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+
+    }
+
+    private void LihatRumahHarga(double harga, ArrayList<DataRumah> listRumah) {
+        
+        boolean ketemu = false;
+        
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getHarga() <= harga) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+    }
+
+    private void LihatRumahKamar(int jmlhkmr, ArrayList<DataRumah> listRumah) {
+        
+        boolean ketemu = false;
+        
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getJmlhKamar() <= jmlhkmr) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+    }
+
+    private void LihatRumahParkir(int jmlhprk, ArrayList<DataRumah> listRumah) {
+        
+        boolean ketemu = false;
+        
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getJmlhParkir() <= jmlhprk) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+    }
+    
+
+    private void LihatRumahLantai(int lt, ArrayList<DataRumah> listRumah) {
+        
+        boolean ketemu = false;
+        
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getJmlhLantai() <= lt) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+    }
+
+    private void LihatRumahToilet(int toilet, ArrayList<DataRumah> listRumah) {
+        
+        boolean ketemu = false;
+        
+        for (int i = 0; i < listRumah.size(); i++) {
+            if (listRumah.get(i).getJmlhToilet() <= toilet) {
+                System.out.println(listRumah.get(i).getNamaRumah());
+                System.out.println("Alamat : " + listRumah.get(i).getAlamat());
+                System.out.println("Harga : Rp" + (int) listRumah.get(i).getHarga());
+                System.out.println("Kamar : " + listRumah.get(i).getJmlhKamar() + ", Luas Bangunan : "
+                        + listRumah.get(i).getLuasBangunan() + "m\u00B2, Luas Tanah : "
+                        + listRumah.get(i).getLuasTanah() + "m\u00B2");
+                System.out.println(listRumah.get(i).getNamaRumah() + " " + listRumah.get(i).getDescription());
+                System.out.println("Rincian ");
+                System.out.println("Lahan Parkir : " + listRumah.get(i).getJmlhParkir() + "\t Jumlah Lantai "
+                        + listRumah.get(i).getJmlhLantai());
+                ketemu = true;
+            }
+        }
+        if (!ketemu) {
+            System.out.println("DATA TIDAK DITEMUKAN");
+        }
+    }
+
+    public void Search(ArrayList<DataRumah> ListRumah) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("1. Alamat");
+        System.out.println("2. Harga");
+        System.out.println("3. Jumlah Kamar");
+        System.out.println("4. Jumlah Parkir");
+        System.out.println("5. Jumlah Lantai");
+        System.out.println("6.Jumlah Toilet");
+        System.out.println("0. EXIT");
+        System.out.println("Note : cukup ketikkan angkanya saja");
+
+        int selectData = 0;
+        selectData = input.nextInt();
+        input.nextLine();
+        switch (selectData) {
+            case 1 -> {
+                System.out.print("Masukkan Alamat : ");
+                String newAlamat = input.nextLine();
+                LihatRumahAlamat(newAlamat, ListRumah);
+            }
+            case 2 -> {
+                System.out.print("Masukkan Harga Maksimal : ");
+                double newHarga = input.nextDouble();
+                LihatRumahHarga(newHarga, ListRumah);
+
+            }
+            case 3 -> {
+                System.out.print("Masukkan Jumlah Kamar : ");
+                int newJmlKamar = input.nextInt();
+                LihatRumahKamar(newJmlKamar, ListRumah);
+            }
+            case 4 -> {
+                System.out.print("Masukkan Jumlah parkir : ");
+                int newJmlprk = input.nextInt();
+                LihatRumahParkir(newJmlprk, ListRumah);
+            }
+            case 5 -> {
+                System.out.print("Masukkan Jumlah Lantai : ");
+                int newJmlLt = input.nextInt();
+                LihatRumahLantai(newJmlLt, ListRumah);
+            }
+            case 6 -> {
+                System.out.print("Masukkan Jumlah Kamar : ");
+                int newJmlToilet = input.nextInt();
+                LihatRumahToilet(newJmlToilet, ListRumah);
+            }
+            case 0 -> {
+                break;
+            }
+        }
+    }
+
 }
