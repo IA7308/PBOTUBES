@@ -1,222 +1,140 @@
 package tp.tubespbo;
 
-public class Pegawai extends Promosi{
-    
-    private String password;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Pegawai {
     private String username;
-    private DataRmh[] DataRumah;
-    protected String[] ListKodeAgensi;
-    private Promosi[] listPromosi ;
-    //private String[] ChatBox;
-    
-    
-    public Pegawai(String username, String password){
-        this.ListKodeAgensi = null;
-        this.password = password;
+    private String password;
+    private List<String> kodeAgensiList;
+
+    public Pegawai(String username, String password) {
         this.username = username;
-        
+        this.password = password;
+         this.kodeAgensiList = new ArrayList<>();
+    }
+
+    public boolean login(String inputUsername, String inputPassword) {
+        return username.equals(inputUsername) && password.equals(inputPassword);
+    }
+
+    public void lihatDataRumah(List<DataRumah> dataRumahList) {
+        if (dataRumahList.isEmpty()) {
+            System.out.println("Belum ada data rumah yang diunggah.") ;
+        } else {
+            System.out.println("=== Data Rumah ===");
+            for (DataRumah rumah : dataRumahList) {
+                System.out.println("ID Rumah: " + rumah.getIdRumah());
+                System.out.println("Alamat: " + rumah.getAlamat());
+                System.out.println("Nama Rumah: " + rumah.getNamaRumah());
+                System.out.println("Deskripsi: " + rumah.getDescription());
+                System.out.println("Harga: " + rumah.getHarga());
+                System.out.println("Jumlah Kamar: " + rumah.getJmlhKamar());
+                System.out.println("Luas Bangunan: " + rumah.getLuasBangunan());
+                System.out.println("Luas Tanah: " + rumah.getLuasTanah());
+                System.out.println("Jumlah Parkir: " + rumah.getJmlhParkir());
+                System.out.println("Jumlah Lantai: " + rumah.getJmlhLantai());
+                System.out.println("Jumlah Toilet: " + rumah.getJmlhToilet());
+                System.out.println("--------------------");
+            }
+        }
     }
     
-    public Pegawai(){}
+    public void tambahKodeAgensi(String kodeAgensi) {
+        kodeAgensiList.add(kodeAgensi);
+        System.out.println("Kode agensi berhasil ditambahkan!");
+    }
+
+    public boolean cekKetersediaanKodeAgensi(String kodeAgensi) {
+        return !kodeAgensiList.contains(kodeAgensi);
+    }
+
+    public List<String> getKodeAgensiList() {
+        return kodeAgensiList;
+    }
     
-    public void register(String username, String Pasword, String KodeAgensi){}
+    public void lihatKodeAgensiList() {
+        System.out.println("Daftar Kode Agensi:");
+        for (String kodeAgensi : kodeAgensiList) {
+            System.out.println(kodeAgensi);
+        }
+    }
     
-    public boolean Login(String username, String password){
-        if(username.equals(this.username) && password.equals(this.password)){
-            System.out.println("Anda berhasil Login sebagai Pegawai, " + this.username);
-            return true;
-        }else{
-            System.out.println("Username atau Password tidak tersedia");
-            return false;
+    public void tambahWaktuTersedia(List<WaktuTersediaForm> waktuTersediaList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan waktu tersedia yang ingin ditambahkan (tanggal): ");
+        String waktuTambah = scanner.nextLine();
+
+        // Create a new instance of WaktuTersediaForm and add it to the list
+        WaktuTersediaForm waktuTersedia = new WaktuTersediaForm(waktuTambah);
+        waktuTersediaList.add(waktuTersedia);
+
+        System.out.println("Waktu tersedia berhasil ditambahkan.");
+    }
+
+    public void hapusWaktuTersedia(List<WaktuTersediaForm> waktuTersediaList) {
+        // Print all available times
+        System.out.println("=== Daftar Waktu Tersedia ===");
+        for (int i = 0; i < waktuTersediaList.size(); i++) {
+            WaktuTersediaForm waktuTersedia = waktuTersediaList.get(i);
+            System.out.println("Index: " + i);
+            System.out.println("Waktu Tersedia: " + waktuTersedia.getWaktuTersedia());
+            System.out.println("--------------------");
+        }
+
+        // Prompt user to choose an index to remove
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan index waktu tersedia yang ingin dihapus: ");
+        int indexHapus = scanner.nextInt();
+
+        if (indexHapus >= 0 && indexHapus < waktuTersediaList.size()) {
+            // Remove the chosen time from the list
+            waktuTersediaList.remove(indexHapus);
+            System.out.println("Waktu tersedia berhasil dihapus.");
+        } else {
+            System.out.println("Index tidak valid.");
         }
     }
 
-    public DataRmh[] getDataRumah() {
-        return DataRumah;
-    }
     
-    public void lihatDataRumah(){
-        for(int i = 0; i<this.DataRumah.length; i++){
-            System.out.println(this.DataRumah[i].getNamaRumah());
-            System.out.println("Alamat : " + this.DataRumah[i].getAlamat());
-            System.out.println("Harga : Rp" + (int)this.DataRumah[i].getHarga());
-            System.out.println("Kamar : " + this.DataRumah[i].getJmlhKamar() + ", Luas Bangunan : " 
-                    + this.DataRumah[i].getLuasBangunan() +"m\u00B2, Luas Tanah : " 
-                    + this.DataRumah[i].getLuasTanah() + "m\u00B2");
-            System.out.println(this.DataRumah[i].getNamaRumah() + " " + this.DataRumah[i].getDescription());
-            System.out.println("Rincian ");
-            System.out.println("Lahan Parkir : " + this.DataRumah[i].getJmlhParkir() + "\t Jumlah Lantai " +  this.DataRumah[i].getJmlhLantai());
-        }
-    }
-    
-    public void editDataRumah(DataRmh[] DataRumah){
-        
-        if(this.DataRumah != null){
-        // Menghitung jumlah data yang baru ingin ditambahkan
-        int newDataLength = 0;
-        for (int i = 0; i < DataRumah.length; i++) {
-            boolean exists = false;
-            for (int j = 0; j < this.DataRumah.length; j++) {
-                if (DataRumah[i].getIdRumah().equals(this.DataRumah[j].getIdRumah())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                newDataLength++;
+     public void aksesFormPengajuan(List<FormPengajuan> formList) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=== Akses Form Pengajuan ===");
+        System.out.print("Masukkan ID Form Pengajuan: ");
+        String idFormPengajuan = scanner.nextLine();
+
+        FormPengajuan formPengajuan = null;
+        for (FormPengajuan form : formList) {
+            if (form.getIdForm().equals(idFormPengajuan)) {
+                formPengajuan = form;
+                break;
             }
         }
 
-        // Menambahkan data baru ke array this.DataRumah
-        DataRmh[] newChatBox = new DataRmh[this.DataRumah.length + newDataLength];
-        for (int i = 0; i < this.DataRumah.length; i++) {
-            newChatBox[i] = this.DataRumah[i];
-        }
-        int newIndex = this.DataRumah.length;
-        for (int i = 0; i < DataRumah.length; i++) {
-            boolean exists = false;
-            for (int j = 0; j < this.DataRumah.length; j++) {
-                if (DataRumah[i].getIdRumah().equals(this.DataRumah[j].getIdRumah())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                newChatBox[newIndex++] = DataRumah[i];
-            }
-        }
-        this.DataRumah = newChatBox;
-    } else {
-        this.DataRumah = DataRumah;
-    }
+        if (formPengajuan != null) {
+            System.out.println("Detail Form Pengajuan:");
+            System.out.println("ID Form: " + formPengajuan.getIdForm());
+            System.out.println("Username: " + formPengajuan.getUsername());
+            System.out.println("ID Rumah: " + formPengajuan.getIdRumah());
+            System.out.println("Nama Rumah: " + formPengajuan.getNamaRumah());
+            System.out.println("ID Pembeli: " + formPengajuan.getIdPembeli());
+            System.out.println("Waktu Janjian: " + formPengajuan.getWaktuJanjian());
+            System.out.println("Lokasi Janjian: " + formPengajuan.getLokasiJanjian());
 
-        
-        /*
-        if(this.DataRumah!=null){
-            DataRmh[] newChatBox = new DataRmh[this.DataRumah.length + DataRumah.length];
-            for (int i = 0; i < this.DataRumah.length; i++) {
-                newChatBox[i] = this.DataRumah[i];
+            System.out.print("Apakah Anda menyetujui form pengajuan ini? (ya/tidak): ");
+            String jawaban = scanner.nextLine();
+
+            if (jawaban.equalsIgnoreCase("ya")) {
+                formPengajuan.setStatus(true);
+                System.out.println("Form pengajuan telah disetujui.");
+            } else {
+                formPengajuan.setStatus(false);
+                System.out.println("Form pengajuan tidak disetujui.");
             }
-            for (int i = 0; i < DataRumah.length; i++) {
-                newChatBox[this.DataRumah.length + i] = DataRumah[i];
-            }
-            this.DataRumah = newChatBox;
-        }else{
-            this.DataRumah = DataRumah;
-        }*/
-    }
-    
-    public void newAgensi(String Kode){
-        String[] tempList = {Kode};
-        //this.ListKodeAgensi = new String[];
-        if(this.ListKodeAgensi != null){
-            String[] TempList = new String[ListKodeAgensi.length + tempList.length];
-            for (int i = 0; i < ListKodeAgensi.length; i++) {
-                TempList[i] = ListKodeAgensi[i];
-            }
-            for (int i = 0; i < tempList.length; i++) {
-                TempList[ListKodeAgensi.length + i] = tempList[i];
-            }
-            this.ListKodeAgensi = TempList;
-        }else{
-            this.ListKodeAgensi = tempList;
+        } else {
+            System.out.println("Form Pengajuan dengan ID tersebut tidak ditemukan.");
         }
     }
- /*
-    public void chat(String Pesan){
-        String[] Chat = {Pesan};
-        if(ChatBox != null){
-            String[] newChatBox = new String[ChatBox.length + Chat.length];
-            for (int i = 0; i < ChatBox.length; i++) {
-                newChatBox[i] = ChatBox[i];
-            }
-            for (int i = 0; i < Chat.length; i++) {
-                newChatBox[ChatBox.length + i] = Chat[i];
-            }
-            ChatBox = newChatBox;
-            for(int i = 0; i<this.ChatBox.length; i++){
-                System.out.println("Agensi " + this.username + " : " + ChatBox[i]);
-            }
-        }else{
-            ChatBox = Chat;
-            System.out.println("Agensi " + this.username + " : " + Pesan);
-        }
-    }
-*/
-    public void uploadDataRumah(DataRmh dataRumah){
-        DataRmh[] tempDataRumah = {dataRumah};
-        if(DataRumah != null){
-            DataRmh[] temp = new DataRmh[DataRumah.length + tempDataRumah.length];
-            for (int i = 0; i < DataRumah.length; i++) {
-                temp[i] = DataRumah[i];
-            }
-            for (int i = 0; i < tempDataRumah.length; i++) {
-                temp[DataRumah.length + i] = tempDataRumah[i];
-            }
-            this.DataRumah = temp;
-        }else{
-            this.DataRumah = tempDataRumah;            
-        }
-    }
-    
-    public void editDataRumahAlamat(DataRmh[] dataRumah,int index, String alamat){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setAlamat(alamat);
-       
-    }
-    
-    public void editDataRumahNamRumah(DataRmh[] dataRumah,int index, String namaRumah){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setNamaRumah(namaRumah);
-       
-    }
-    
-    public void editDataRumahAlamatDesc(DataRmh[] dataRumah,int index, String desc){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setDescription(desc);
-       
-    }
-    
-    public void editDataRumahAlamatHarga(DataRmh[] dataRumah,int index, double harga){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setHarga(harga);
-       
-    }
-    
-    public void editDataRumahJumlahKamar(DataRmh[] dataRumah,int index, int jmlKamar){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setJmlhKamar(jmlKamar);
-       
-    }
-    
-    public void editDataRumahAlamatLuasBangunan(DataRmh[] dataRumah,int index, int LuasBangunan){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setLuasBangunan(LuasBangunan);
-       
-    }
-    
-    public void editDataRumahAlamatLuasTanah(DataRmh[] dataRumah,int index, int LuasTanah){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setLuasTanah(LuasTanah);
-       
-    }
-    
-    public void editDataRumahAlamatJumlahParkir(DataRmh[] dataRumah,int index, int jmlParkir){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setJmlhParkir(jmlParkir);
-       
-    }
-    
-    public void editDataRumahAlamatJumlahLantai(DataRmh[] dataRumah,int index, int jmlLantai){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setJmlhLantai(jmlLantai);
-       
-    }
-    
-    public void editDataRumahAlamatJumlahToilet(DataRmh[] dataRumah,int index, int jmlToilet){
-        this.DataRumah = dataRumah;
-        dataRumah[index].setJmlhToilet(jmlToilet);
-       
-    }
-    
 }

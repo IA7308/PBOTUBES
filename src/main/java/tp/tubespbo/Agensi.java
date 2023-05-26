@@ -1,212 +1,130 @@
+
 package tp.tubespbo;
 
-public class Agensi extends Pegawai  {
-    
-    private String password;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class Agensi {
     private String username;
+    private String password;
     private String kodeAgensi;
-    protected DataRmh[] DataRumah;
-    private Pembeli[] listPembeli;
-    private Promosi[] listPromosi;
-    private Form[] listForm;
-    private Object Promosi;
+    private boolean registered;
 
-    
-    public Agensi(String password, String username, DataRmh[] DataRumah, String KodeAgensi, Promosi[] listPromosi){
-        this.username = username;   
-        this.password = password;
-        this.kodeAgensi = KodeAgensi;
-        this.DataRumah = DataRumah;
-        /*for(int i = 0;i<this.DataRumah.length; i++){
-            String idRumah = this.kodeAgensi + "00" + (i+1);
-            this.DataRumah[i].setIdRumah(idRumah);
-        }*/
-        this.listForm = null;
-        this.listPromosi = listPromosi ;
-    }
-    
-    
     public Agensi(){}
-    
-    @Override
-    public void register(String username, String Pasword, String KodeAgensi){
-        for(int i = 0; i<super.ListKodeAgensi.length; i++){
-            if(super.ListKodeAgensi[i].equals(KodeAgensi)){
-                this.username = username;
-                this.password = Pasword;
-                this.kodeAgensi = KodeAgensi;
-                System.out.println("Akun " + this.username + " berhasil ter-registrasi");
-            }else{
-                System.out.println("Username atau Password tidak tersedia");
-            }    
-        }      
-    }
-    
-    
-    public boolean Login(String username, String password, String KodeAgensi){
-        if(username.equals(this.username) && password.equals(this.password) && KodeAgensi.equals(this.kodeAgensi)){
-            System.out.println("Anda berhasil Login sebagai Agensi, " + this.username);
-            return true;
-        }else{
-            System.out.println("Username atau Password tidak tersedia");
-            return false;
-        }
-    }
-
-    @Override
-    public DataRmh[] getDataRumah() {
-        return DataRumah;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    public Agensi(String username, String password, String kodeAgensi) {
         this.username = username;
+        this.password = password;
+        this.kodeAgensi = kodeAgensi;
+        this.registered = false;
     }
 
-    public void setDataRumah(DataRmh[] DataRumah) {
-        this.DataRumah = DataRumah;
-    }
-       
-    @Override
-    public void lihatDataRumah(){
-        for(int i = 0; i<this.DataRumah.length; i++){
-            String Kode = this.kodeAgensi + "00" + (i+1);
-            if(this.DataRumah[i].getIdRumah().equals(Kode)){
-                System.out.println("Id RUmah : " + this.DataRumah[i].getIdRumah());
-                System.out.println(this.DataRumah[i].getNamaRumah());
-                System.out.println("Alamat : " + this.DataRumah[i].getAlamat());
-                System.out.println("Harga : Rp" + (int)this.DataRumah[i].getHarga());
-                System.out.println("Kamar : " + this.DataRumah[i].getJmlhKamar() + ", Luas Bangunan : " 
-                        + this.DataRumah[i].getLuasBangunan() +"m\u00B2, Luas Tanah : " 
-                        + this.DataRumah[i].getLuasTanah() + "m\u00B2");
-                System.out.println(this.DataRumah[i].getNamaRumah() + " " + this.DataRumah[i].getDescription());
-                System.out.println("Rincian ");
-                System.out.println("Lahan Parkir : " + this.DataRumah[i].getJmlhParkir() + "\t Jumlah Lantai " +  this.DataRumah[i].getJmlhLantai());
-                System.out.println("Jumlah Toilet : " + this.DataRumah[i].getJmlhToilet());
+    public boolean registrasi(Scanner scanner, Pegawai pegawai) {
+    if (!registered) {
+        System.out.print("Masukkan username: ");
+        String inputUsername = scanner.nextLine();
+        System.out.print("Masukkan password: ");
+        String inputPassword = scanner.nextLine();
+        System.out.print("Masukkan kode agensi: ");
+        String inputKodeAgensi = scanner.nextLine();
+        for(int i = 0 ; i < pegawai.getKodeAgensiList().size();i++){
+            if(pegawai.getKodeAgensiList().get(i).equals(inputKodeAgensi)){
+                username = inputUsername;
+                password = inputPassword;
+                kodeAgensi = inputKodeAgensi;
+                registered = true;
+                System.out.println("Registrasi agensi berhasil!");
+                return true;
+            } else {
+                System.out.println("Registrasi agensi gagal! Kode agensi salah.");
             }
-        }
+        } 
+    } else {
+        System.out.println("Anda sudah terdaftar sebagai agensi.");
     }
+    return false;
+}
 
-    @SuppressWarnings("empty-statement")
-    public void addPromosi(Promosi historyPromosi) {
-        Promosi[] tempHistoryPromosi = {historyPromosi};
-        if(listPromosi != null){
-            Promosi[] temp = new Promosi[listPromosi.length + tempHistoryPromosi.length];
-            for (int i = 0; i < listPromosi.length; i++) {
-                temp[i] = listPromosi[i];
-            }
-            for (int i = 0; i < tempHistoryPromosi.length; i++) {
-                temp[listPromosi.length + i] = tempHistoryPromosi[i];
-            }
-            this.listPromosi = temp;
+
+    public boolean login(Scanner scanner) {
+        if (registered) {
+            System.out.print("Masukkan username: ");
+            String inputUsername = scanner.nextLine();
+            System.out.print("Masukkan password: ");
+            String inputPassword = scanner.nextLine();
+            System.out.print("Masukkan kode agensi: ");
+            String inputKodeAgensi = scanner.nextLine();
             
-            for(int i = 0;i<this.listPromosi.length; i++){
-                if (this.listPromosi[i].getIdPromosi() == null) { // Memeriksa jika idRumah belum terisi
-                    String idPromosi = this.kodeAgensi + "P00" + (i+1);
-                    this.listPromosi[i].setIdPromosi(idPromosi);
-                }
+            if (inputUsername.equals(username) && inputPassword.equals(password) && inputKodeAgensi.equals(kodeAgensi)) {
+                System.out.println("Login agensi berhasil!");
+                return true;
+            } else {
+                System.out.println("Login agensi gagal! Username, password, atau kode agensi salah.");
             }
-        }else{
-            this.listPromosi = tempHistoryPromosi;          
+        } else {
+            System.out.println("Anda belum terdaftar sebagai agensi.");
         }
-//        if(Promotions != null){
-//            String[] newChatBox = new String[Promotions.length + Chat.length];
-//            for (int i = 0; i < Promotions.length; i++) {
-//                newChatBox[i] = Promotions[i];
-//            }
-//            for (int i = 0; i < Chat.length; i++) {
-//                newChatBox[Promotions.length + i] = Chat[i];
-//            }
-//            Promotions = newChatBox;
-//            for(int i = 0; i<this.Promotions.length; i++){
-//                System.out.println("Agensi " + this.username + " : " + Promotions[i]);
-//            }
-//        }else{
-//            Promotions = Chat;
-//            System.out.println("Agensi " + this.username + " : " + Pesan);
-//        }
+        return false;
+    }
+    
+    
+    public void tambahDataRumah(Scanner scanner,List<DataRumah> dataRumahList) {
+        System.out.println("Masukkan Data Rumah Baru");
+        System.out.print("Alamat: ");
+        String alamat = scanner.nextLine();
+        System.out.print("Nama Rumah: ");
+        String namaRumah = scanner.nextLine();
+        System.out.print("Deskripsi: ");
+        String description = scanner.nextLine();
+        System.out.print("Harga: ");
+        double harga = scanner.nextDouble();
+        System.out.print("Jumlah Kamar: ");
+        int jmlhKamar = scanner.nextInt();
+        System.out.print("Luas Bangunan: ");
+        int luasBangunan = scanner.nextInt();
+        System.out.print("Luas Tanah: ");
+        int luasTanah = scanner.nextInt();
+        System.out.print("Jumlah Parkir: ");
+        int jmlhParkir = scanner.nextInt();
+        System.out.print("Jumlah Lantai: ");
+        int jmlhLantai = scanner.nextInt();
+        System.out.print("Jumlah Toilet: ");
+        int jmlhToilet = scanner.nextInt();
+        scanner.nextLine(); 
+
+        String idRumah = generateIDRumah(dataRumahList);
+        DataRumah dataRumah = new DataRumah(idRumah, alamat, namaRumah, description, harga, jmlhKamar, luasBangunan, luasTanah, jmlhParkir, jmlhLantai, jmlhToilet);
+        dataRumahList.add(dataRumah);
+       
+        
     }
 
-    public Promosi[] getListPromosi() {
-        return listPromosi;
-    }
-    
-    
-    public void lihatHistoryPromosi(String idAgensi){
-        if(listPromosi != null){
-            for(int i = 0 ; i <  listPromosi.length ; i++){
-            if(idAgensi.equals(listPromosi[i].getIdAgensi())){
-                System.out.println("Waktu Promosi Dikirimkan : " + listPromosi[i].getWaktuPromosi());
-                System.out.println("Isi Pesan Promosi : " );
-                System.out.println(listPromosi[i].getPromosi());
-                System.out.println("Untuk pembeli dengan id : " + listPromosi[i].getIdPembeli());
-            }
-        }
+    private String generateIDRumah(List<DataRumah> dataRumahList) {
+        if(dataRumahList == null){
+            return kodeAgensi + "-"+"1";
         }else {
-            System.out.println("Anda belum pernah memberikan promosi kepada pembeli");
+            int rumahKe = dataRumahList.size() + 1;
+        return kodeAgensi + "-" + rumahKe;
         }
         
-    }
-  
-    @Override
-    public void uploadDataRumah(DataRmh dataRumah){
-        DataRmh[] tempDataRumah = {dataRumah};
-        if(DataRumah != null){
-            DataRmh[] temp = new DataRmh[DataRumah.length + tempDataRumah.length];
-            for (int i = 0; i < DataRumah.length; i++) {
-                temp[i] = DataRumah[i];
-            }
-            for (int i = 0; i < tempDataRumah.length; i++) {
-                temp[DataRumah.length + i] = tempDataRumah[i];
-            }
-            this.DataRumah = temp;
-            for(int i = 0;i<this.DataRumah.length; i++){
-                if (this.DataRumah[i].getIdRumah() == null) { // Memeriksa jika idRumah belum terisi
-                    String idRumah = this.kodeAgensi + "00" + (i+1);
-                    this.DataRumah[i].setIdRumah(idRumah);
-                }
-            }
-        }else{
-            this.DataRumah = tempDataRumah;            
-        }
-    }
-
-    public String getKodeAgensi() {
-        return kodeAgensi;
     }
     
-    public boolean cariIdPembeli(Pembeli[] listPembeli,String idPembeliPromosi){
-        
-        boolean found = false ;
-        for(int i = 0 ; i < listPembeli.length ; i++ ){
-            if(idPembeliPromosi.equals(listPembeli[i].getIdPembeli())){
-                found = true ;
-            }
+    public void lihatDaftarRumah(List<DataRumah> dataRumahList) {
+        System.out.println("Daftar Rumah:");
+        for (DataRumah dataRumah : dataRumahList) {
+            System.out.println("ID Rumah: " + dataRumah.getIdRumah());
+            System.out.println("Alamat: " + dataRumah.getAlamat());
+            System.out.println("Nama Rumah: " + dataRumah.getNamaRumah());
+            System.out.println("Deskripsi: " + dataRumah.getDescription());
+            System.out.println("Harga: " + dataRumah.getHarga());
+            System.out.println("Jumlah Kamar: " + dataRumah.getJmlhKamar());
+            System.out.println("Luas Bangunan: " + dataRumah.getLuasBangunan());
+            System.out.println("Luas Tanah: " + dataRumah.getLuasTanah());
+            System.out.println("Jumlah Parkir: " + dataRumah.getJmlhParkir());
+            System.out.println("Jumlah Lantai: " + dataRumah.getJmlhLantai());
+            System.out.println("Jumlah Toilet: " + dataRumah.getJmlhToilet());
+            System.out.println("---------------------------");
         }
-        return found ;
     }
-
-    public Pembeli[] getListPembeli() {
-        return listPembeli;
-    }
-
-    public void setListPembeli(Pembeli[] listPembeli) {
-        this.listPembeli = listPembeli;
-    }
-
-    public void setListForm(Form[] listForm) {
-        this.listForm = listForm;
-    }        
     
 }
