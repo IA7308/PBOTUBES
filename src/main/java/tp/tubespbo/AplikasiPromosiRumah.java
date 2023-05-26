@@ -10,7 +10,19 @@ public class AplikasiPromosiRumah {
         ArrayList<DataRumah> dataRumahList = new ArrayList<DataRumah>();
         ArrayList<FormPengajuan> formList = new ArrayList<FormPengajuan>();
         ArrayList<WaktuTersediaForm> waktuList = new ArrayList<WaktuTersediaForm>();
+        
+        dataRumahList.add(new DataRumah("JALAN DIRGANTARA RAYA, JATISARI JATIASIH, BEKASI", 
+                "Taman Jatisari Permai Tipe 40", 
+                "Merupakan tiper rumah 1 lantai ...", 400000000,2, 40, 73, 1, 1, 1));
 
+        dataRumahList.add(new DataRumah("BANDUNG, JATINANGOR SAMPING ITB", 
+                "Rumah Lama Berjuta Kenangan", 
+                "Merupakan tiper rumah 1 lantai ...", 400000000,2, 52, 123, 1, 1, 1));
+        
+        dataRumahList.add(new DataRumah("BANDUNG, BOJONGSOANG SAMPING UNTEL", 
+                "Rumah Tua Penuh Makna", 
+                "Merupakan tiper rumah 1 lantai ...", 400000000,2, 99, 75, 1, 1, 1));
+        
         Pegawai pegawai = new Pegawai("ADMIN", "ADMIN");
         pegawai.tambahKodeAgensi("FBI");
         Agensi agensi = new Agensi();
@@ -129,7 +141,8 @@ public class AplikasiPromosiRumah {
                                 System.out.println("\n=== MENU PEMBELI ===");
                                 System.out.println("1. Lihat Daftar Rumah");
                                 System.out.println("2. Isi Form Pengajuan");
-                                System.out.println("3. Logout");
+                                System.out.println("3. Search");
+                                System.out.println("4. Logout");
                                 System.out.print("Pilihan: ");
                                 int pembeliChoice = scanner.nextInt();
                                 scanner.nextLine(); // Membaca newline setelah membaca angka
@@ -142,6 +155,8 @@ public class AplikasiPromosiRumah {
                                         pembeli.isiFormPengajuan(scanner, dataRumahList, waktuList);
                                         break;
                                     case 3:
+                                        pembeli.Search(dataRumahList);
+                                    case 4:
                                         logout = true;
                                         break;
                                     default:
