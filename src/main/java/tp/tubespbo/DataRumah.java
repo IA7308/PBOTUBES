@@ -1,6 +1,6 @@
 package tp.tubespbo;
 
-public class DataRmh {
+public class DataRumah {
     private String idRumah ;
     private String alamat;
     private String namaRumah;
@@ -13,7 +13,7 @@ public class DataRmh {
     private int JmlhLantai;
     private int JmlhToilet;
     
-    public DataRmh(String idRumah,String alamat, String namaRumah, String Description, double harga, int JmlhKamar, int LuasBangunan, int LuasTanah, int JmlhParkir, int JmlhLantai, int JmlhToilet){
+    public DataRumah(String idRumah,String alamat, String namaRumah, String Description, double harga, int JmlhKamar, int LuasBangunan, int LuasTanah, int JmlhParkir, int JmlhLantai, int JmlhToilet){
         this.idRumah = idRumah ;
         this.alamat = alamat;
         this.namaRumah = namaRumah;
@@ -27,7 +27,7 @@ public class DataRmh {
         this.JmlhToilet = JmlhToilet;
     }
 
-    public DataRmh(String alamat, String namaRumah, String Description, double harga, int JmlhKamar, int LuasBangunan, int LuasTanah, int JmlhParkir, int JmlhLantai, int JmlhToilet){
+    public DataRumah(String alamat, String namaRumah, String Description, double harga, int JmlhKamar, int LuasBangunan, int LuasTanah, int JmlhParkir, int JmlhLantai, int JmlhToilet){
         this.idRumah = null ;
         this.alamat = alamat;
         this.namaRumah = namaRumah;
@@ -130,5 +130,5 @@ public class DataRmh {
         this.JmlhLantai = JmlhLantai;
     }
     
-    public DataRmh(){}
+    public DataRumah(){}
 }
