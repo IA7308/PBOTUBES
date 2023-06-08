@@ -137,4 +137,14 @@ public class Pegawai {
             System.out.println("Form Pengajuan dengan ID tersebut tidak ditemukan.");
         }
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public Pegawai(){};
 }

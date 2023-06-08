@@ -11,12 +11,12 @@ import javax.swing.JToggleButton;
 
 public class Landing extends javax.swing.JFrame {
 
-    //ControllerApp CA;
+    ControllerApp CA;
     
     public Landing() {
         initComponents();
-        //CA = new ControllerApp(this);
-        //CA.PilihanBox();
+        CA = new ControllerApp(this);
+        CA.PilihanBox();
     }
 
     public JToggleButton getAgensi() {
@@ -76,7 +76,7 @@ public class Landing extends javax.swing.JFrame {
     }
 
     public JTextField getUsername() {
-        return KodeAgensi;
+        return username;
     }
 
     @SuppressWarnings("unchecked")
@@ -170,7 +170,7 @@ public class Landing extends javax.swing.JFrame {
         jPanel2.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 170, -1));
 
         KodeAgensi.setForeground(new java.awt.Color(204, 204, 204));
-        KodeAgensi.setText("username");
+        KodeAgensi.setText("Kode Agensi");
         KodeAgensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KodeAgensiActionPerformed(evt);
@@ -222,11 +222,11 @@ public class Landing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PegawaiActionPerformed
-        // TODO add your handling code here:
+        CA.PilihanBox();
     }//GEN-LAST:event_PegawaiActionPerformed
 
     private void PembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PembeliActionPerformed
-        // TODO add your handling code here:
+        CA.PilihanBox();
     }//GEN-LAST:event_PembeliActionPerformed
 
     private void AgensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgensiActionPerformed

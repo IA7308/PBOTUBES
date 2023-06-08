@@ -7,12 +7,12 @@ import Model.*;
 public interface iPegawaiDao {
     public void insertRumah(DataRumah rumah);
     public void insertKodeAgensi(String KodeAgensi);
-    public void update(DataRumah rumah);
-    public void delete(int idx);
-    public List<DataRumah> getRumah(int id);
+    public void update();
+    public void delete(String idRumah);
+    public List<DataRumah> getRumah(String idRumah);
     public List<DataRumah> getAllRumah();
     public List<Pegawai> getAllPegawai();
-    public List<Form> getForm(int id);
+    public List<Form> getForm(String idForm);
     public List<Form> getAllForm();
     
 }

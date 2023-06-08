@@ -79,7 +79,7 @@ public class AgensiDao implements iAgensiDao{
     public List<DataRumah> getAllRumahAgensi(Agensi agen) {
         listRumah = new ArrayList<>();
         Statement statement;
-        String sql = "SELECT * FROM rumah WHERE id= "+ agen.getKodeAgensi();
+        String sql = "SELECT * FROM rumah WHERE idRumah like '%"+ agen.getKodeAgensi() + "'";
         try {
             statement = DBConnection.getConnection().createStatement();
             
@@ -113,7 +113,7 @@ public class AgensiDao implements iAgensiDao{
 
     @Override
     public List<Form> getFormAgensi(Agensi agen) {
-        listRumah = new ArrayList<>();
+        listForm = new ArrayList<>();
         Statement statement;
         String sql = "SELECT * FROM form WHERE id= "+ agen.getKodeAgensi();
         try {
