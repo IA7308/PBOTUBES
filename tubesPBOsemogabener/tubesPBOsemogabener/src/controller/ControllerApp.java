@@ -28,6 +28,7 @@ public class ControllerApp implements Listener {
     List<DataRumah> listRumah;
     List<DataRumah> listRumahPengajuan;
     List<String> KodeAgensi;
+    List<String> NamaAgensi;
     List<Form> listForm;
     List<WaktuTersediaForm> listWaktuJanjian;
     Landing frameRegis;
@@ -59,6 +60,7 @@ public class ControllerApp implements Listener {
         listPegawai = pegawaiDao.getAllPegawai();
         listAgen = agenDao.getAllAgensi();
         listBuyer = pembeliDao.getAllPembeli();
+        
     }
 
     public ControllerApp() {
@@ -76,6 +78,7 @@ public class ControllerApp implements Listener {
         listForm = pegawaiDao.getAllForm();
         listWaktuJanjian = pegawaiDao.getAllWaktuJanjian();
         KodeAgensi = pegawaiDao.getAllKodeAgensi();
+        NamaAgensi = pegawaiDao.getAllNamaAgensi();
     }
 
     @Override
@@ -86,7 +89,8 @@ public class ControllerApp implements Listener {
         this.frameRegis.getUsername().setVisible(true);
         this.frameRegis.getPassword().setVisible(true);
         this.frameRegis.getSignup1().setVisible(false);
-                this.frameRegis.getLabelEmail().setVisible(false);
+        this.frameRegis.getLabelRegistrasiPegawai().setVisible(false);
+        this.frameRegis.getLabelEmail().setVisible(false);
         this.frameRegis.getLabelKodeAgensi().setVisible(false);
         this.frameRegis.getLabelNomorHp().setVisible(false);
 
@@ -98,14 +102,24 @@ public class ControllerApp implements Listener {
             this.frameRegis.getLabelEmail().setVisible(false);
             this.frameRegis.getLabelKodeAgensi().setVisible(true);
             this.frameRegis.getLabelNomorHp().setVisible(false);
+            this.frameRegis.getLabelUsername().setVisible(true);
+            this.frameRegis.getLabelPassword().setVisible(true);
         } else if (this.frameRegis.getPegawai().isSelected()) {
+            this.frameRegis.getjLabel2().setVisible(false);
+            this.frameRegis.getLabelRegistrasiPegawai().setVisible(true);
+            
             this.frameRegis.getKodeAgensi().setVisible(false);
             this.frameRegis.getEmail().setVisible(false);
             this.frameRegis.getNomorhp().setVisible(false);
             this.frameRegis.getSignup1().setVisible(false);
+            
             this.frameRegis.getLabelEmail().setVisible(false);
+            this.frameRegis.getLabelPassword().setVisible(false);
+            this.frameRegis.getLabelUsername().setVisible(false);
             this.frameRegis.getLabelKodeAgensi().setVisible(false);
             this.frameRegis.getLabelNomorHp().setVisible(false);
+            this.frameRegis.getLabelUsername().setVisible(true);
+            this.frameRegis.getLabelPassword().setVisible(true);
         } else if (this.frameRegis.getPembeli().isSelected()) {
             this.frameRegis.getKodeAgensi().setVisible(false);
             this.frameRegis.getEmail().setVisible(true);
@@ -114,6 +128,8 @@ public class ControllerApp implements Listener {
             this.frameRegis.getLabelEmail().setVisible(true);
             this.frameRegis.getLabelKodeAgensi().setVisible(false);
             this.frameRegis.getLabelNomorHp().setVisible(true);
+            this.frameRegis.getLabelUsername().setVisible(true);
+            this.frameRegis.getLabelPassword().setVisible(true);
         }
     }
 
@@ -332,6 +348,17 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getListWaktu().setVisible(false);
         this.frameAdmin.getjScrollPane5().setVisible(false);
         this.frameAdmin.getLabelKodeAgensi().setVisible(false);
+
+        // yang baru
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(false);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
     }
 
     private void pilihanAdminLDR() {
@@ -372,6 +399,17 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getListWaktu().setVisible(false);
         this.frameAdmin.getjScrollPane5().setVisible(false);
         this.frameAdmin.getLabelKodeAgensi().setVisible(false);
+
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(false);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
     }
 
     private void pilihanAdminIKA() {
@@ -394,9 +432,23 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getMasukanIdFormPengajuan().setVisible(false);
         this.frameAdmin.getNamaRumah().setVisible(false);
         this.frameAdmin.getTableDataRumah().setVisible(false);
+
         this.frameAdmin.getTextFieldInputIdForm().setVisible(false);
         this.frameAdmin.getTextFieldInputKode().setVisible(true);
         this.frameAdmin.getTextFieldInputWaktu1().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+
+        // yang baru
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(true);
+        this.frameAdmin.getInputNamaAgensi().setVisible(true);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(false);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
+        // yang baru
         this.frameAdmin.getSubmitDeleteAll().setVisible(false);
         this.frameAdmin.getSubmitDeleteID().setVisible(false);
         this.frameAdmin.getSubmitInputIdForm1().setVisible(false);
@@ -451,12 +503,23 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getListWaktu().setVisible(false);
         this.frameAdmin.getjScrollPane5().setVisible(false);
         this.frameAdmin.getLabelKodeAgensi().setVisible(false);
+
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(true);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
     }
 
     private void pilihanAdminMWF() {
         this.frameAdmin.getAlamat().setVisible(false);
         this.frameAdmin.getDaftarIdForm().setVisible(false);
-        this.frameAdmin.getDaftarKodeAgensi1().setVisible(false);
+        this.frameAdmin.getDaftarKodeAgensi1().setVisible(true);
         //this.frameAdmin.getDashboardLabel().setVisible(false);
         this.frameAdmin.getCodeAgensi().setVisible(false);
         this.frameAdmin.getDeskripsi().setVisible(false);
@@ -468,7 +531,7 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getJumlahParkir().setVisible(false);
         this.frameAdmin.getJumlahToilet().setVisible(false);
         this.frameAdmin.getListIdForm().setVisible(false);
-        this.frameAdmin.getListKodeAgensi1().setVisible(false);
+        this.frameAdmin.getListKodeAgensi1().setVisible(true);
         this.frameAdmin.getLuasBangunan().setVisible(false);
         this.frameAdmin.getLuasTanah().setVisible(false);
         this.frameAdmin.getMasukanIdFormPengajuan().setVisible(false);
@@ -483,19 +546,30 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getSubmitInputKode().setVisible(false);
         this.frameAdmin.getSubmitInputKode2().setVisible(true);
         this.frameAdmin.getjScrollPane1().setVisible(false);
-        this.frameAdmin.getjScrollPane2().setVisible(false);
+        this.frameAdmin.getjScrollPane2().setVisible(true);
         this.frameAdmin.getjScrollPane3().setVisible(false);
         this.frameAdmin.getjScrollPane4().setVisible(false);
         this.frameAdmin.getTableUntukKonfirmasi().setVisible(false);
         this.frameAdmin.getKonfirmasiTable().setVisible(false);
         this.frameAdmin.getListWaktu().setVisible(false);
         this.frameAdmin.getjScrollPane5().setVisible(false);
-        this.frameAdmin.getLabelKodeAgensi().setVisible(false);
+        this.frameAdmin.getLabelKodeAgensi().setVisible(true);
+
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(true);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(true);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
     }
 
     private void pilihanAdminEditForm() {
         this.frameAdmin.getAlamat().setVisible(false);
-        this.frameAdmin.getDaftarIdForm().setVisible(true);
+        this.frameAdmin.getDaftarIdForm().setVisible(false);
         this.frameAdmin.getDaftarKodeAgensi1().setVisible(false);
         //this.frameAdmin.getDashboardLabel().setVisible(false);
         this.frameAdmin.getCodeAgensi().setVisible(false);
@@ -508,7 +582,7 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getJumlahParkir().setVisible(false);
         this.frameAdmin.getJumlahToilet().setVisible(false);
         this.frameAdmin.getListIdForm().setVisible(false);
-        this.frameAdmin.getListKodeAgensi1().setVisible(true);
+        this.frameAdmin.getListKodeAgensi1().setVisible(false);
         this.frameAdmin.getLuasBangunan().setVisible(false);
         this.frameAdmin.getLuasTanah().setVisible(false);
         this.frameAdmin.getMasukanIdFormPengajuan().setVisible(false);
@@ -517,20 +591,31 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getTextFieldInputIdForm().setVisible(false);
         this.frameAdmin.getTextFieldInputKode().setVisible(false);
         this.frameAdmin.getTextFieldInputWaktu1().setVisible(false);
-        this.frameAdmin.getSubmitDeleteAll().setVisible(true);
+        this.frameAdmin.getSubmitDeleteAll().setVisible(false);
         this.frameAdmin.getSubmitDeleteID().setVisible(true);
         this.frameAdmin.getSubmitInputIdForm1().setVisible(false);
         this.frameAdmin.getSubmitInputKode().setVisible(false);
         this.frameAdmin.getSubmitInputKode2().setVisible(false);
         this.frameAdmin.getjScrollPane1().setVisible(false);
-        this.frameAdmin.getjScrollPane2().setVisible(true);
+        this.frameAdmin.getjScrollPane2().setVisible(false);
         this.frameAdmin.getjScrollPane3().setVisible(false);
         this.frameAdmin.getjScrollPane4().setVisible(false);
         this.frameAdmin.getTableUntukKonfirmasi().setVisible(false);
         this.frameAdmin.getKonfirmasiTable().setVisible(false);
-        this.frameAdmin.getListWaktu().setVisible(true);
-        this.frameAdmin.getjScrollPane5().setVisible(true);
+        this.frameAdmin.getListWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane5().setVisible(false);
         this.frameAdmin.getLabelKodeAgensi().setVisible(true);
+
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(true);
+        this.frameAdmin.getTableForm().setVisible(false);
+        this.frameAdmin.getTableWaktu().setVisible(true);
+        this.frameAdmin.getjScrollPane6().setVisible(true);
+        this.frameAdmin.getjScrollPane7().setVisible(false);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
     }
 
     private void pilihanAdminKF() {
@@ -547,7 +632,7 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getJumlahLantai().setVisible(false);
         this.frameAdmin.getJumlahParkir().setVisible(false);
         this.frameAdmin.getJumlahToilet().setVisible(false);
-        this.frameAdmin.getListIdForm().setVisible(true);
+        this.frameAdmin.getListIdForm().setVisible(false);
         this.frameAdmin.getListKodeAgensi1().setVisible(false);
         this.frameAdmin.getLuasBangunan().setVisible(false);
         this.frameAdmin.getLuasTanah().setVisible(false);
@@ -562,7 +647,7 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getSubmitInputIdForm1().setVisible(true);
         this.frameAdmin.getSubmitInputKode().setVisible(false);
         this.frameAdmin.getSubmitInputKode2().setVisible(false);
-        this.frameAdmin.getjScrollPane1().setVisible(true);
+        this.frameAdmin.getjScrollPane1().setVisible(false);
         this.frameAdmin.getjScrollPane2().setVisible(false);
         this.frameAdmin.getjScrollPane3().setVisible(false);
         this.frameAdmin.getjScrollPane4().setVisible(false);
@@ -571,6 +656,16 @@ public class ControllerApp implements Listener {
         this.frameAdmin.getListWaktu().setVisible(false);
         this.frameAdmin.getjScrollPane5().setVisible(false);
         this.frameAdmin.getLabelKodeAgensi().setVisible(false);
+        this.frameAdmin.getTextFieldInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getInputNamaAgensi().setVisible(false);
+        this.frameAdmin.getLabelNamaAgensi().setVisible(false);
+        this.frameAdmin.getTableForm().setVisible(true);
+        this.frameAdmin.getTableWaktu().setVisible(false);
+        this.frameAdmin.getjScrollPane6().setVisible(false);
+        this.frameAdmin.getjScrollPane7().setVisible(true);
+        this.frameAdmin.getLabelKeterangan().setVisible(false);
+        this.frameAdmin.getLabelWaktuDipilih().setVisible(false);
+
     }
 
     @Override
@@ -633,10 +728,34 @@ public class ControllerApp implements Listener {
             listRumah = pembeliDao.getAllRumah();
             TableDataRumah tdm = new TableDataRumah(listRumah);
             this.framePembeli.getTableDatarRumah().setModel(tdm);
+        } else if(this.frameAdmin.getMenyuntingWaktuForm().isSelected()){
+            listForm = pegawaiDao.getAllForm();
+            TableForm tdm = new TableForm(listForm);
+            this.frameAdmin.getTableForm().setModel(tdm);
+        } else if(this.frameAdmin.getMenambahWaktuForm().isSelected()){
+            listWaktuJanjian = pegawaiDao.getAllWaktuJanjian();
+            TableWaktu tw = new TableWaktu(listWaktuJanjian);
+            this.frameAdmin.getTableWaktu().setModel(tw);
+        } else if (this.framePembeli.getFormPengajuan().isSelected()){
+            Pembeli pembeli = new Pembeli();
+            for(int i = 0;i<listBuyer.size();i++){
+                if(listBuyer.get(i).getUsername().equals(this.frameLogin.getUsername().getText())){
+                    pembeli = listBuyer.get(i);
+                }
+            }
+            listForm = pegawaiDao.getFormId(pembeli.getIdPembeli());
+            TableForm tdm = new TableForm(listForm);
+            this.framePembeli.getTableForm().setModel(tdm);
         }
+        
+        
+        
     }
     
-    public void submitRumah(){       
+    public void submitRumah(){
+        listRumah = pegawaiDao.getAllRumah();
+        listRumahPengajuan = pegawaiDao.getAllRumahPengajuan();
+        
         DataRumah rumah = new DataRumah();
         
         rumah.setIdRumah(listRumah.size() + listRumahPengajuan.size() + 1);
@@ -701,6 +820,7 @@ public class ControllerApp implements Listener {
     public void isiListKodeAgen() {
 
         KodeAgensi = pegawaiDao.getAllKodeAgensi();
+        NamaAgensi = pegawaiDao.getAllNamaAgensi();
         DefaultListModel<String> listKodeAgensi = new DefaultListModel<>();
         for (int i = 0; i < this.KodeAgensi.size(); i++) {
             listKodeAgensi.add(i, this.KodeAgensi.get(i));
@@ -884,13 +1004,19 @@ public class ControllerApp implements Listener {
             this.framePembeli.getJumlahParkir().setText("Jumlah Parkir : " + listRumah.get(row).getJmlhParkir());
             this.framePembeli.getLuasBangunan().setText("Luas Bangunan : " + listRumah.get(row).getLuasBangunan());
             this.framePembeli.getLuasTanah().setText("Luas Tanah : " + listRumah.get(row).getLuasTanah());
-        } else if (this.frameAdmin.getMenyuntingWaktuForm().isSelected() || this.frameAdmin.getMenambahWaktuForm().isSelected()){
+        } else if (this.frameAdmin.getMenyuntingWaktuForm().isSelected()){
             this.frameAdmin.getTextFieldInputIdForm().setText(listForm.get(row).getIdForm());
 //            this.frameAdmin.getLabelKodeAgensi().setText("Kode Agensi: " + KodeAgensi.get(row));
 
         } else if(this.framePembeli.getFormPengajuan().isSelected()){
             this.framePembeli.getTextFieldNamaRumah().setText(listRumah.get(row).getNamaRumah());
-        }
+        } else if (this.frameAdmin.getKonfirmasiForm().isSelected()){
+            this.frameAdmin.getLabelNamaAgensi().setText("Nama Agensi: " + NamaAgensi.get(row));
+        } else if (this.frameAdmin.getMenambahWaktuForm().isSelected() || this.frameAdmin.getLihatKodeAgensi().isSelected()){
+            this.frameAdmin.getLabelNamaAgensi().setText("Nama Agensi: " + NamaAgensi.get(row));
+            this.frameAdmin.getLabelKodeAgensi().setText("Kode Agensi: " + KodeAgensi.get(row));
+            this.frameAdmin.getLabelWaktuDipilih().setText(listWaktuJanjian.get(row).getWaktuTersedia());
+        } 
     }
     
     private void pilihanPembeliKosong(){
@@ -926,6 +1052,8 @@ public class ControllerApp implements Listener {
         this.framePembeli.getLabelHarga().setVisible(false);
         this.framePembeli.getLabelNama().setVisible(false);
         this.framePembeli.getLabelJumlahKamar().setVisible(false);
+        this.framePembeli.getTableForm().setVisible(false);
+        this.framePembeli.getTablePengajuanForm().setVisible(false);
         
     }
     private void pilihanPembeliLDR(){
@@ -961,7 +1089,8 @@ public class ControllerApp implements Listener {
         this.framePembeli.getLabelHarga().setVisible(false);
         this.framePembeli.getLabelNama().setVisible(false);
         this.framePembeli.getLabelJumlahKamar().setVisible(false);
-        
+        this.framePembeli.getTableForm().setVisible(false);
+        this.framePembeli.getTablePengajuanForm().setVisible(false);
     }
     
     private void pilihanPembeliFP(){
@@ -997,6 +1126,8 @@ public class ControllerApp implements Listener {
         this.framePembeli.getLabelHarga().setVisible(false);
         this.framePembeli.getLabelNama().setVisible(false);
         this.framePembeli.getLabelJumlahKamar().setVisible(false);
+        this.framePembeli.getTableForm().setVisible(false);
+        this.framePembeli.getTablePengajuanForm().setVisible(false);
     }
     
     private void pilihanPembeliSearch(){
@@ -1032,12 +1163,54 @@ public class ControllerApp implements Listener {
         this.framePembeli.getLabelHarga().setVisible(true);
         this.framePembeli.getLabelNama().setVisible(true);
         this.framePembeli.getLabelJumlahKamar().setVisible(true);
+        this.framePembeli.getTableForm().setVisible(false);
+        this.framePembeli.getTablePengajuanForm().setVisible(false);
         
     }
 
+    private void pilihanPembeliLFP(){
+        this.framePembeli.getTextFieldNamaRumah().setVisible(false);
+        this.framePembeli.getTextFieldHarga().setVisible(false);
+        this.framePembeli.getTextFieldJumlahKamar().setVisible(false);
+        this.framePembeli.getSubmitForm().setVisible(false);
+        this.framePembeli.getSubmitSearch1().setVisible(false);
+        this.framePembeli.getTextFieldNamaRumah().setVisible(false);
+        this.framePembeli.getjComboBox1().setVisible(false);
+        this.framePembeli.getjComboBox2().setVisible(false);
+        this.framePembeli.getjComboBox3().setVisible(false);
+        this.framePembeli.getjComboBox4().setVisible(false);
+        this.framePembeli.getKeterangan1().setVisible(false);
+        this.framePembeli.getKeterangan2().setVisible(false);
+        this.framePembeli.getTableDatarRumah().setVisible(false);
+        //this.framePembeli.getTabelID().setVisible(false);
+        //this.framePembeli.getTabelKodeAgensi().setVisible(false);
+        this.framePembeli.getTabelAlamat().setVisible(false);
+        this.framePembeli.getAlamatRumah().setVisible(false);
+        this.framePembeli.getHarga().setVisible(false);
+        this.framePembeli.getJumlahKamar().setVisible(false);
+        this.framePembeli.getLuasBangunan().setVisible(false);
+        this.framePembeli.getLuasTanah().setVisible(false);
+        this.framePembeli.getJumlahParkir().setVisible(false);
+        this.framePembeli.getJumlahToilet().setVisible(false);
+        this.framePembeli.getJumlahLantai().setVisible(false);
+        this.framePembeli.getTextFieldNama().setVisible(false);
+        this.framePembeli.getjScrollPane1().setVisible(false);
+        this.framePembeli.getNamaRumahField().setVisible(false);
+        this.framePembeli.getWaktuJanjianField().setVisible(false);
+        this.framePembeli.getTanggalJanjianField().setVisible(false);
+        this.framePembeli.getLabelHarga().setVisible(false);
+        this.framePembeli.getLabelNama().setVisible(false);
+        this.framePembeli.getLabelJumlahKamar().setVisible(false);
+        this.framePembeli.getTableForm().setVisible(true);
+        this.framePembeli.getTablePengajuanForm().setVisible(true);
+        
+    }
+    
     @Override
     public void submitKodeAgen() {
-        pegawaiDao.insertKodeAgensi(this.frameAdmin.getTextFieldInputKode().getText(), "");
+        // yang baru
+        pegawaiDao.insertKodeAgensi(this.frameAdmin.getTextFieldInputKode().getText(), this.frameAdmin.getTextFieldInputNamaAgensi().getText());
+        // yang baru
         JOptionPane.showMessageDialog(frameAdmin, "Kode Agensi berhasil di tambahkan");
         
     }
@@ -1050,6 +1223,8 @@ public class ControllerApp implements Listener {
             pilihanPembeliLDR();
         }else if(this.framePembeli.getFormPengajuan().isSelected()){
             pilihanPembeliFP();
+        }else if (this.framePembeli.getLihatFormPengajuan().isSelected()){
+            pilihanPembeliLFP();
         }else{
             pilihanPembeliKosong();
         }
@@ -1131,16 +1306,18 @@ public class ControllerApp implements Listener {
     @Override
     public void inputWaktu() {
         WaktuTersediaForm waktu = new WaktuTersediaForm();
-        waktu.setKodeAgensi(this.frameLogin.getKodeAgensi().getText());
+        waktu.setKodeAgensi(this.frameAdmin.getListKodeAgensi1().getSelectedValue());
         waktu.setWaktuTersedia(this.frameAdmin.getTextFieldInputWaktu1().getText());
         
         pegawaiDao.insertWaktuJanjian(waktu);
+        
+        JOptionPane.showMessageDialog(frameAdmin, "Waktu Baru telah ditambahkan");
     }
 
     @Override
     public void Delete() {
         //if (!this.frameAdmin.getTextFieldInputIdForm().getText().trim().isEmpty()) {
-            pegawaiDao.deleteWaktu(this.frameAdmin.getListWaktu().getSelectedValue());
+            pegawaiDao.deleteWaktu(this.frameAdmin.getLabelWaktuDipilih().getText());
         //} else {
             JOptionPane.showMessageDialog(frameAdmin, "Isi Waktu yang akan Dihapus");
         //}
@@ -1154,7 +1331,7 @@ public class ControllerApp implements Listener {
     public void updateForm() {
         if (!this.frameAdmin.getTextFieldInputIdForm().getText().trim().isEmpty()) {
 
-            List<Form> form = pegawaiDao.getForm(this.frameAdmin.getListIdForm().getSelectedValue());
+            List<Form> form =  pegawaiDao.getForm(this.frameAdmin.getTextFieldInputIdForm().getText());
 
             int response = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
             if (response == JOptionPane.YES_OPTION) {
@@ -1193,6 +1370,7 @@ public class ControllerApp implements Listener {
         TableDataRumah TDR = new TableDataRumah(listRumah);
         framePembeli.getTableDatarRumah().setModel(TDR);
     }
+    
     
     
     public void Search(){

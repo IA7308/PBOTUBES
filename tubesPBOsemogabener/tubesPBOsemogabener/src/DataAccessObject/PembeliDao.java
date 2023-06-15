@@ -23,7 +23,6 @@ public class PembeliDao implements iPembeliDao{
     List<DataRumah> listRumah;
     List<Form> listForm;
     
-    @Override
     public List<DataRumah> getRumah(String Alamat, int jumlahKamar, double harga) {
         listRumah = new ArrayList<>();
         Statement statement;
@@ -61,7 +60,6 @@ public class PembeliDao implements iPembeliDao{
         }
     }
 
-    @Override
     public void insertForm(Form form) {
         String sql = "INSERT INTO form (idForm, unamePembeli, idRumah, namaRumah, idPembeli, tanggalJanjian, waktuJanjian, lokasiJanjian, statusPengajuan) " 
                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -84,7 +82,6 @@ public class PembeliDao implements iPembeliDao{
         }
     }
 
-    @Override
     public List<Pembeli> getAllPembeli() {
         listPembeli = new ArrayList<>();
         Statement statement;

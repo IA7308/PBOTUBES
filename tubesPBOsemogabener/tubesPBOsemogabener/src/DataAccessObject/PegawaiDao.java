@@ -24,6 +24,7 @@ public class PegawaiDao implements iPegawaiDao {
     List<Form> listForm;
     List<WaktuTersediaForm> listWaktu;
     List<String> listKodeAgensi;
+    List<String> listNamaAgensi;
     List<DataRumah> listRumahPengajuan;
     
     @Override
@@ -209,7 +210,7 @@ public class PegawaiDao implements iPegawaiDao {
     public List<Form> getForm(String idForm) {
         listForm = new ArrayList<>();
         Statement statement;
-        String sql = "SELECT * FROM form WHERE idForm= "+ idForm;
+        String sql = "SELECT * FROM form WHERE idForm= '"+ idForm +"'";
         try {
             statement = DBConnection.getConnection().createStatement();
             
@@ -220,13 +221,14 @@ public class PegawaiDao implements iPegawaiDao {
                     Form form = new Form();
                     // salin ke class kotak
                     form.setIdForm(result.getString(2));
-                    form.setIdRumah(result.getInt(3));
-                    form.setIdPembeli(result.getString(4));
-                    form.setLokasiJanjian(result.getString(5));
-                    form.setNamaRumah(result.getString(6));
-                    form.setUsername(result.getString(7));
+                    form.setIdRumah(result.getInt(4));
+                    form.setIdPembeli(result.getString(6));
+                    form.setTanggalJanjian(result.getString(7));
+                    form.setNamaRumah(result.getString(5));
+                    form.setUsername(result.getString(3));
                     form.setWaktuJanjian(result.getString(8));
-                    form.setStatus(result.getString(9));
+                    form.setLokasiJanjian(result.getString(9));
+                    form.setStatus(result.getString(10));
                     // tambahkan ke dalam list
                     listForm.add(form);
                 }
@@ -247,18 +249,19 @@ public class PegawaiDao implements iPegawaiDao {
             statement = DBConnection.getConnection().createStatement();
             
             ResultSet result = statement.executeQuery("SELECT * FROM form");
-            
+
             while (result.next()) {  // selama masih ada datanya 
                 Form form = new Form();
                 // salin ke class kotak
                 form.setIdForm(result.getString(2));
-                form.setUsername(result.getString(3));
                 form.setIdRumah(result.getInt(4));
-                form.setNamaRumah(result.getString(5));
                 form.setIdPembeli(result.getString(6));
                 form.setTanggalJanjian(result.getString(7));
-                form.setLokasiJanjian(result.getString(8));
-                form.setStatus(result.getString(9));
+                form.setNamaRumah(result.getString(5));
+                form.setUsername(result.getString(3));
+                form.setWaktuJanjian(result.getString(8));
+                form.setLokasiJanjian(result.getString(9));
+                form.setStatus(result.getString(10));
                 // tambahkan ke dalam list
                 listForm.add(form);
             }
@@ -358,7 +361,7 @@ public class PegawaiDao implements iPegawaiDao {
 
     @Override
     public List<String> getAllKodeAgensi() {
-         listKodeAgensi = new ArrayList<>();
+        listKodeAgensi = new ArrayList<>();
         Statement statement;
         try {
             statement = DBConnection.getConnection().createStatement();
@@ -467,6 +470,68 @@ public class PegawaiDao implements iPegawaiDao {
             statement.close();
         } catch (SQLException e) {
             Logger.getLogger(PegawaiDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    @Override
+    public List<String> getAllNamaAgensi() {
+        listNamaAgensi = new ArrayList<>();
+        Statement statement;
+        try {
+            statement = DBConnection.getConnection().createStatement();
+            
+            ResultSet result = statement.executeQuery("SELECT namaAgensi FROM agensi");
+            
+            while (result.next()) {  // selama masih ada datanya 
+                String Kode = result.getString(1);
+                                              
+                // tambahkan ke dalam list
+                listNamaAgensi.add(Kode);
+            }
+            statement.close();
+            result.close();
+            // connection tidak perlu di close 
+            
+            // menghasilkan list kotak yang berisikan tabel kotak
+            return listNamaAgensi;
+        } catch (SQLException ex) {
+            Logger.getLogger(PegawaiDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Form> getFormId(String idPembeli) {
+        listForm = new ArrayList<>();
+        Statement statement;
+        String sql = "SELECT * FROM form WHERE idPembeli='" + idPembeli + "'";
+        try {
+            statement = DBConnection.getConnection().createStatement();
+            
+            try (ResultSet result = statement.executeQuery(sql)) {
+                
+                while (result.next()) { // kalau ada 
+                    
+                    Form form = new Form();
+                    // salin ke class kotak
+                    form.setIdForm(result.getString(2));
+                    form.setIdRumah(result.getInt(4));
+                    form.setIdPembeli(result.getString(6));
+                    form.setTanggalJanjian(result.getString(7));
+                    form.setNamaRumah(result.getString(5));
+                    form.setUsername(result.getString(3));
+                    form.setWaktuJanjian(result.getString(8));
+                    form.setLokasiJanjian(result.getString(9));
+                    form.setStatus(result.getString(10));
+                    // tambahkan ke dalam list
+                    listForm.add(form);
+                }
+                statement.close();
+            }
+            return listForm;
+        } catch (SQLException e) {
+            Logger.getLogger(PegawaiDao.class.getName()).log(Level.SEVERE, null, e);
+            return null;
         }
     }
     

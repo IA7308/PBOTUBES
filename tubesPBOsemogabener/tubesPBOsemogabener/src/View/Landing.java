@@ -19,6 +19,7 @@ public class Landing extends javax.swing.JFrame {
         initComponents();
         //CA = new ControllerApp(this);
         //CA.PilihanBox();
+        getLabelRegistrasiPegawai().setVisible(false);
         getKodeAgensi().setVisible(false);
         getEmail().setVisible(false);
         getNomorhp().setVisible(false);
@@ -29,6 +30,11 @@ public class Landing extends javax.swing.JFrame {
         getLabelKodeAgensi().setVisible(false);
         getLabelNomorHp().setVisible(false);
     }
+
+    public JLabel getLabelRegistrasiPegawai() {
+        return labelRegistrasiPegawai;
+    }
+    
 
     public void setListener(Listener listener) {
         this.listener = listener;
@@ -132,6 +138,7 @@ public class Landing extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        labelRegistrasiPegawai = new javax.swing.JLabel();
         Pegawai = new javax.swing.JToggleButton();
         Pembeli = new javax.swing.JToggleButton();
         Agensi = new javax.swing.JToggleButton();
@@ -170,12 +177,17 @@ public class Landing extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\tubesPBO\\src\\Gambar\\Rumah.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, 360));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 600, 360));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 830));
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelRegistrasiPegawai.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        labelRegistrasiPegawai.setForeground(new java.awt.Color(204, 102, 0));
+        labelRegistrasiPegawai.setText("Silahkan pilih menu login untuk pegawai");
+        jPanel2.add(labelRegistrasiPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         Pegawai.setBackground(new java.awt.Color(204, 102, 0));
         buttonGroup1.add(Pegawai);
@@ -398,6 +410,7 @@ public class Landing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelRegistrasiPegawai;
     private javax.swing.JTextField nomorhp;
     private javax.swing.JTextField password;
     private javax.swing.JButton signup1;

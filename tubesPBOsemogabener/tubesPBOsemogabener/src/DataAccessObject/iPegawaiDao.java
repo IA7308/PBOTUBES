@@ -18,9 +18,10 @@ public interface iPegawaiDao {
     public List<Pegawai> getAllPegawai();
     public List<Form> getForm(String idForm);
     public List<Form> getAllForm();
+    public List<Form> getFormId(String idPembeli);
     public List<WaktuTersediaForm> getAllWaktuJanjian();
     public List<String> getAllKodeAgensi();
     public List<Agensi> getAllAgensi();
     public List<DataRumah> getAllRumahPengajuan();
-    
+    public List<String> getAllNamaAgensi();
 }
